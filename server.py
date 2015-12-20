@@ -29,9 +29,9 @@ else:
 GPIO.setmode(GPIO.BCM)
 pinlist=[17, 18, 27, 22]
 
-#2 = bed-light
-#3 = focus light
-#4 = fan
+#17 = bed-light
+#18 = focus light
+#27 = fan
 
 for i in pinlist:
     GPIO.setup(i,GPIO.OUT)
@@ -58,9 +58,9 @@ class ServerHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
             if(key=="bed_light"):
 	        if(value==1):                   # switch light on
-                      GPIO.output(17,GPIO.LOW)
+                	GPIO.output(17,GPIO.LOW)
                 elif(value==0):                 #switch light off
-                        GPIO.output(17,GPIO.HIGH)
+                	GPIO.output(17,GPIO.HIGH)
 
             elif(key=="focus_light"):
                 if(value==1):
@@ -70,13 +70,9 @@ class ServerHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
             elif(key=="fan"):
                 if(value==1):
-                    if GPIO.input(27):
-                        GPIO.setup(27,GPIO.OUT)
-                        GPIO.output(27,GPIO.LOW)
+                	GPIO.output(27,GPIO.LOW)
                 elif(value==0):
-                    if not GPIO.input(27):
-                        GPIO.setup(27,GPIO.OUT)
-                        GPIO.output(27,GPIO.HIGH)
+              		GPIO.output(27,GPIO.HIGH)
             
         self.send_response(200) #create header
         self.send_header("Content-type", "text/html")
