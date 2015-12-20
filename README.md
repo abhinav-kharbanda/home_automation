@@ -1,1 +1,1 @@
-# home_automation using Raspi 2
+# Home Automation using Raspi 2
